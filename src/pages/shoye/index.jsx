@@ -4,10 +4,16 @@ import { Outlet } from 'react-router'
 import {useParams} from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setName } from '../../store/PTk';
 export default function Shouye() {
   const location = useLocation()
   console.log("location",location);
-
+  const stu  = useSelector(state=>state.stu)
+  const dispatch = useDispatch()
+  const changeName = ()=>{
+    dispatch(setName("黄哒哒"))
+  }
   // 获取params 的传参
   const params = useParams()
   // 获取query的传参
@@ -28,6 +34,8 @@ export default function Shouye() {
     <div>
       shoye
       <button onClick={back}>点击查询</button>
+      {stu.name}11111111111
+      <button onClick={changeName}>点击修改</button>
       <Outlet></Outlet>
     </div>
   )

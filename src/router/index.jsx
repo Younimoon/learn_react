@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Navigate } from "react-router";
+import AuthRouter from "./authRouter";
 const Xiaoxi = lazy(()=>import("../pages/xiaoxi"))
 const Myself = lazy(()=>import("../pages/myself"))
 const Shouye = lazy(()=>import("../pages/shoye"))
@@ -7,7 +8,9 @@ const Shouye = lazy(()=>import("../pages/shoye"))
 const Router = [
     {
         path:"/myslef",
-        element:<Myself></Myself>
+        // 鉴权写法
+        // element:<AuthRouter><Myself></Myself></AuthRouter> 
+        element:<Myself></Myself> 
     },
     {
         path:"/shouye/:name/:id",
@@ -18,9 +21,10 @@ const Router = [
                 element:<Xiaoxi/>
             },
         ]
-    },{
-        path:"/",
-        element:<Navigate to='/myslef'/>
-    }
+    },
+    // {
+    //     path:"/",
+    //     element:<Navigate to='/myslef'/>
+    // }
 ]
 export default Router
